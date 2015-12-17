@@ -57,4 +57,3 @@
     (filter (fn [[_ c]] (= c 500)))
     (apply max-key (fn [[s _]] s))
     first))
-
