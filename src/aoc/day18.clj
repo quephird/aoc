@@ -19,8 +19,7 @@
             \.)
       \. (if (= ons 3)
             \#
-            \.)
-      (println x y))))
+            \.))))
 
 (defn next-grid [grid]
   (let [r (count grid)
@@ -28,7 +27,6 @@
         xys (for [y (range r)
                   x (range c)]
               [x y])]
-    ; (println r c)
     (->> xys
       (map (fn [[x y]] (next-light grid x y)))
       (partition c)
@@ -69,10 +67,8 @@
 (defn solution2 [filename]
   (let [grid  (read-grid filename)
         grid' (turn-corners-on grid)]
-    ; (println grid')
     (as-> (iterate next-grid' grid') $
       (nth $ 100)
       (apply str $)
       (frequencies $)
       (get $ \#))))
-
